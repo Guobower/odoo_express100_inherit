@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+
+
+    <record model="ir.ui.view" id="res_car_note_p_from_inherit">
+            <field name="name">amos.car.form.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"></field>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='origin']" position="after">
+                     <field name="express_company"></field>
+                     <field name="express_order"></field>
+                     <field name="express_message"></field>
+                     <field name="total"></field>
+                </xpath>
+                <xpath expr="//button[@name='action_confirm']" position="after">
+                     <button string="查询" name="getHtml" type="object" class="oe_highlight"/>
+                </xpath>
+            </field>
+     </record>
+
+     <record model="ir.actions.act_window" id="kuaidi_company.action_window11">
+      <field name="name">kuaidi_company window</field>
+      <field name="res_model">kuaidi_company.kuaidi_company</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          创建快递公司
+        </p>
+      </field>
+     </record>
+
+      <menuitem id="menu_warehouse_config11" name="添加快递公司" parent="stock.menu_stock_config_settings" action="kuaidi_company.action_window11"/>
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="myodoo" id="myodoo.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="myodoo.menu_1" parent="myodoo.menu_root"/>
+    <menuitem name="Menu 2" id="myodoo.menu_2" parent="myodoo.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="myodoo.menu_1_list" parent="myodoo.menu_1"
+              action="myodoo.action_window"/>
+    <menuitem name="Server to list" id="myodoo" parent="myodoo.menu_2"
+              action="myodoo.action_server"/>
+    -->
+  </data>
+</odoo>
